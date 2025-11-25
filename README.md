@@ -1,31 +1,11 @@
-<div align="center">
 <h2>PIBNet: a Physics-Inspired Boundary Network for Multiple Scattering Simulations
 </h2>
 
-<br>
-
-<div align="center">
-<table style="margin:0 auto;border-collapse:collapse;">
-    <tr>
-        <td style="text-align:center;padding:0 1rem;"><strong>Rémi Marsal</strong></td>
-        <td style="text-align:center;padding:0 1rem;"><strong>Stéphanie Chaillat</strong></td>
-    </tr>
-    <tr>
-        <td style="text-align:center;padding:0 1rem;">U2IS, ENSTA<br>Institut Polytechnique de Paris</td>
-        <td style="text-align:center;padding:0 1rem;">Laboratoire POEMS, CNRS, INRIA, ENSTA<br>Institut Polytechnique de Paris</td>
-    </tr>
-</table>
-</div>
-
-<br>
-
-![improved_PIBNet](assets/improved_pibnet.png)
-
-<br>
-
-</div>
 
 This repository contains the official implementation of the paper [**PIBNet**](https://openreview.net/forum?id=MiYStkjrfo) and its [improvement](https://openreview.net/forum?id=kex0P2KMsZ) accepted at the **1st Workshop on Differentiable Systems and Scientific Machine Learning @ EurIPS 2025**.
+
+
+![improved_PIBNet](assets/improved_pibnet.png)
 
 ## Installation
 
