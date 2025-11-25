@@ -1,0 +1,22 @@
+defaults:
+  - data_base
+
+equation: laplace
+boundary_conditions: dirichlet
+source:
+  type: monopole
+
+node_features:
+  source_dir: 3
+  # source_dist: 1
+  source_dist_pe: 128
+  direction: 3
+  boundary_cond: 3
+
+edge_features:
+  # dist: 1
+  dist_pe: 128
+  rel_dir: 3
+  
+environment:
+  dim: 3 

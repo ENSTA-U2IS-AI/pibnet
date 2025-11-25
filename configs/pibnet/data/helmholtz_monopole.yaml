@@ -1,0 +1,26 @@
+defaults:
+  - data_base
+
+equation: helmholtz
+boundary_conditions: dirichlet
+source:
+  type: monopole
+
+node_features:
+  # wavelength: 1
+  wavelength_pe: 1
+  source_dir: 3
+  # source_dist: 1
+  source_dist_pe: 128
+  source_phase: 2
+
+edge_features:
+  # dist: 1
+  dist_pe: 128
+  phase: 2
+  rel_dir: 3
+  # wavelength: 1
+  wavelength_pe: 1
+  
+environment:
+  dim: 3 

@@ -1,0 +1,60 @@
+defaults:
+  - data: helmholtz_monopole
+  # - data: helmholtz_plane
+  # - data: laplace
+  - model/pibnet
+  - loss: huber
+  
+project: pibnet
+
+seed: 42
+
+dataset_root: datasets
+dataset_train: 
+dataset_val: 
+dataset_test:
+
+data:
+  etypes: 
+    - neighbors
+    - distant
+
+  # Number of scale levels in the GNN architecture
+  num_levels: 3
+
+  # Ratio of connection to create with the available nodes for each node at the highest scale level
+  new_edges_per_node_ratio:
+    neighbors: 0
+    distant: 0.1
+
+  # Number of edges to propose for each required edge at the highest scale level
+  candidate_edge_ratio: 2
+
+  # Define for how many message passing layer each distant edge sample lasts at the highest scale level. 
+  # To get PIBNet behavior, set value data.distant_edge_sample_period to model.bottom_processor_size i.e. 6.
+  # To get PIBNet improvement behavior, set value data.distant_edge_sample_period to model.bottom_processor_size i.e. 2.
+  distant_edge_sample_period: 6
+
+training_batch_size: 16
+val_batch_size: 100
+accumulate_grad_batches: 1
+
+lr_max: 1e-4
+lr_min: 1e-7
+lr_scheduler: True
+max_grad_norm: 1.
+
+max_epochs: 100
+
+apply_data_augmentation: True
+
+# Whether the network should output normalized values with the distance to a source point
+predict_normalized: True
+
+# Whether the loss should compare normalized values with the distance to a source point
+compare_normalized: True
+
+# Position encoding
+pe:
+  dist:
+    dim: 128

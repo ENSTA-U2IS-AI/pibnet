@@ -1,0 +1,23 @@
+defaults:
+  - obstacles: obstacles
+  - sources@source: monople
+
+seed:
+
+equation: helmholtz # laplace
+
+num_samples: 10
+
+inter_obs_margin: 0.1
+source_obs_margin: 0.1
+
+save_path: datasets
+save_name: null
+
+environment:
+  dim: 3
+  size: 10
+
+num_levels: 5
+
+gmres_tolerance: 1e-5

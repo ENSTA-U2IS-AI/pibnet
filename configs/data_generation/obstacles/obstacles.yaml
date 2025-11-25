@@ -1,0 +1,10 @@
+defaults:
+  # - shapes@sphere: sphere
+  - shapes@ellipsoid: ellipsoid
+  # - shapes@cube: cube
+
+h: 0.1
+number:
+  min: 3
+  max: 4
+num_tries: 100

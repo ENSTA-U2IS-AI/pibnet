@@ -1,0 +1,7 @@
+h: 0.1
+environment:
+  size: 10
+source:
+  wavelength:
+    min: 0.6
+    max: 6
