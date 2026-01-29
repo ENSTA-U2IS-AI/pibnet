@@ -8,3 +8,5 @@ meshio
 pyyaml
 tqdm
 wandb
+torch_geometric
+nvidia-physicsnemo
