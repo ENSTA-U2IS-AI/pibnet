@@ -86,6 +86,7 @@ class PIBNetLightning(pl.LightningModule):
     def __init__(self, cfg):
         super().__init__()
         self.cfg = cfg
+        print(OmegaConf.to_yaml(self.cfg))
 
         dim_obs = sum(cfg.data.node_features.values())
         dim_edges = sum(cfg.data.edge_features.values())
@@ -106,9 +107,7 @@ class PIBNetLightning(pl.LightningModule):
             first_top_processor_size=cfg.model.first_top_processor_size,
             last_top_processor_size=cfg.model.last_top_processor_size,
             bottom_processor_size=cfg.model.bottom_processor_size,
-            distant_edge_sample_period=cfg.data.distant_edge_sample_period,
-            alternate_edge_samples=cfg.model.alternate_edge_samples if 'alternate_edge_samples' in cfg.model else False,
-            accumulate_long_range_edges=cfg.model.accumulate_long_range_edges,
+            distant_edge_sample_period=2, #cfg.model.distant_edge_sample_period,
             hidden_dim_processor=cfg.model.hidden_dim,
             hidden_dim_node_encoder=cfg.model.hidden_dim,
             hidden_dim_edge_encoder=cfg.model.hidden_dim,
@@ -126,9 +125,6 @@ class PIBNetLightning(pl.LightningModule):
         self.loss_fn = hydra.utils.instantiate(cfg.loss)
         
         self.save_hyperparameters()
-
-        with open(os.path.join(os.path.join(cfg.dataset_root, cfg.dataset_test), 'samples.json')) as f:
-            self.samples = json.load(f)
 
 
     def configure_optimizers(self):
@@ -243,36 +239,6 @@ class PIBNetLightning(pl.LightningModule):
     def test_step(self, batched_data, batch_idx):
 
         batched_graph = batched_data
-
-        ## Uncomment the following and comment "preds = self.forward_step(batched_graph)" to unlock ensembling
-        # num_rep = 3
-        # all_preds = []
-
-        # for _ in range(num_rep):
-
-        #     graph = deepcopy(batched_graph)
-
-        #     graph = graph.to(torch.device('cpu'))
-
-        #     for etype in self.cfg.data.new_edges_per_node_ratio:
-        #         if self.cfg.data.new_edges_per_node_ratio[etype] > 0.:
-        #             if self.cfg.data.num_levels > 1:
-        #                     node_mask = graph.ndata[f"lvl_{self.cfg.data.num_levels-1}"] == 1
-        #             else:
-        #                     node_mask = None
-        #             # new_src, new_dst = get_random_edges_to_add(graph, self.cfg.data.new_edges_per_node_ratio[etype], self.cfg.data.candidate_edge_ratio, etype=etype, node_mask=node_mask)
-        #             # new_src, new_dst = get_random_edges_to_add_with_fixed_ratio_per_avail_node(graph, self.cfg.data.new_edges_per_node_ratio[etype], self.cfg.data.candidate_edge_ratio, etype=etype, node_mask=node_mask)
-        #             new_src, new_dst = get_random_edges_to_add_with_fixed_ratio_per_avail_node_v2(graph, self.cfg.data.new_edges_per_node_ratio[etype], self.cfg.data.candidate_edge_ratio, etype=etype, node_mask=node_mask)
-
-        #             graph = add_new_edges(graph, new_src, new_dst, etype=etype, sample=self.samples[batch_idx], cfg=self.cfg)
-
-        #     graph = graph.to(torch.device('cuda'))
-            
-        #     preds = self.forward_step(graph)
-
-        #     all_preds.append(preds)
-
-        # preds = torch.stack(all_preds, dim=-1).mean(dim=-1)
 
         preds = self.forward_step(batched_graph)
 

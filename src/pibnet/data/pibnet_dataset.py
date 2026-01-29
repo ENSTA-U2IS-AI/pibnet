@@ -174,7 +174,6 @@ class PIBNetDataset(BaseDGLDataset):
                                    2 * sample['source']['amplitudes'][2] * (direction * source_dir).sum(axis=-1, keepdim=True)
                               ], axis=-1)
 
-
                self.graphs.append(graph)
 
      def __len__(self):
@@ -204,7 +203,7 @@ class PIBNetDataset(BaseDGLDataset):
                          node_mask = graph.ndata[f"lvl_{self.cfg.data.num_levels-1}"] == 1
                     else:
                          node_mask = None
-                    new_src, new_dst = get_edges_to_add(graph, self.cfg.data.new_edges_per_node_ratio[etype], self.cfg.data.candidate_edge_ratio, etype=etype, node_mask=node_mask)
+                    new_src, new_dst = get_edges_to_add(graph, self.cfg.data.new_edges_per_node_ratio[etype], self.cfg.data.candidate_edge_ratio, node_mask=node_mask)
 
                     graph = add_new_edges(graph, new_src, new_dst, etype=etype, sample=sample, cfg=self.cfg)
                
@@ -239,7 +238,7 @@ class PIBNetDatasetTest(PIBNetDataset):
                          node_mask = graph.ndata[f"lvl_{self.cfg.data.num_levels-1}"] == 1
                     else:
                          node_mask = None
-                    new_src, new_dst = get_edges_to_add(graph, self.cfg.data.new_edges_per_node_ratio[etype], self.cfg.data.candidate_edge_ratio, etype=etype, node_mask=node_mask)
+                    new_src, new_dst = get_edges_to_add(graph, self.cfg.data.new_edges_per_node_ratio[etype], self.cfg.data.candidate_edge_ratio, node_mask=node_mask)
 
                     graph = add_new_edges(graph, new_src, new_dst, etype=etype, sample=sample, cfg=self.cfg)
                     
