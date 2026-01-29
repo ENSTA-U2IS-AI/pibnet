@@ -2,7 +2,6 @@ bempp-cl
 hydra-core
 torch==2.4.0
 pytorch-lightning
-dgl
 roma
 gmsh
 meshio
