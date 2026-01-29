@@ -9,4 +9,4 @@ pyyaml
 tqdm
 wandb
 torch_geometric
-nvidia-physicsnemo
+nvidia-physicsnemo==1.0.1
