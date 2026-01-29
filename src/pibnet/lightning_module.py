@@ -107,7 +107,7 @@ class PIBNetLightning(pl.LightningModule):
             first_top_processor_size=cfg.model.first_top_processor_size,
             last_top_processor_size=cfg.model.last_top_processor_size,
             bottom_processor_size=cfg.model.bottom_processor_size,
-            distant_edge_sample_period=2, #cfg.model.distant_edge_sample_period,
+            distant_edge_sample_period=cfg.model.distant_edge_sample_period,
             hidden_dim_processor=cfg.model.hidden_dim,
             hidden_dim_node_encoder=cfg.model.hidden_dim,
             hidden_dim_edge_encoder=cfg.model.hidden_dim,
