@@ -2,7 +2,7 @@
 </h2>
 
 
-This repository contains the official implementation of the paper [**PIBNet**](https://openreview.net/forum?id=MiYStkjrfo) and its [improvement](https://openreview.net/forum?id=kex0P2KMsZ) accepted at the **1st Workshop on Differentiable Systems and Scientific Machine Learning @ EurIPS 2025**.
+This repository contains the official implementation of the paper [**PIBNet**](https://arxiv.org/abs/2512.02049) and its [improvement](https://openreview.net/forum?id=kex0P2KMsZ) accepted at the **1st Workshop on Differentiable Systems and Scientific Machine Learning @ EurIPS 2025**.
 
 
 ![improved_PIBNet](assets/improved_pibnet.png)
